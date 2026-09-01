@@ -1,0 +1,113 @@
+{% extends "base.html" %}
+
+{% block title %}Tasks | Smart Placement System{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <h1>Daily Tasks</h1>
+    <p>
+        Total: {{ total_tasks }} |
+        Completed: {{ completed_tasks }} |
+        Pending: {{ pending_tasks }}
+    </p>
+
+    <form
+        method="POST"
+        action="/clear-completed-tasks"
+        onsubmit="return confirm('Are you sure you want to clear completed tasks?');"
+    >
+
+        <button type="submit">
+            Clear Completed Tasks
+        </button>
+
+    </form>
+
+    <p>Manage your daily placement preparation tasks.</p>
+
+    <section class="cards">
+        {% if tasks %}
+        {% for task in tasks %}
+
+        <div class="card task-card {{ task[3]|lower }}">
+
+            <h3>{{ task[1] }}</h3>
+
+            <p>{{ task[2] }}</p>
+
+            <p>
+                <strong>Status:</strong>
+                {% if task[3] == "Completed" %}
+                    ✅ Completed
+                {% else %}
+                    ⏳ Pending
+                {% endif %}
+            </p>
+
+            {% if task[3] == "Pending" %}
+
+            <form method="POST" action="/complete-task/{{ task[0] }}">
+                <button type="submit">Mark as Completed</button>
+            </form>
+
+            {% endif %}
+
+            <form method="POST" action="/delete-task/{{ task[0] }}">
+                <button type="submit">Delete Task</button>
+            </form>
+
+        </div>
+
+        {% endfor %}
+        {% else %}
+
+        <p>No tasks yet. Add your first task below! 🚀</p>
+
+        {% endif %}
+
+    </section>
+
+    <section class="update-section">
+
+        <h2>Add New Task</h2>
+
+        <form method="POST" action="/add-task">
+
+            <label for="title">Task Title:</label>
+
+            <input
+                type="text"
+                id="title"
+                name="title"
+                placeholder="e.g. Complete DSA Lecture 41"
+                required
+            >
+
+            <label for="description">Description:</label>
+
+            <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Enter task description"
+                required
+            >
+
+            <button type="submit">Add Task</button>
+
+        </form>
+
+    </section>
+
+    <!-- Back to Home -->
+
+    <p>
+        <a href="/">← Back to Home</a>
+    </p>
+
+
+</main>
+
+{% endblock %}

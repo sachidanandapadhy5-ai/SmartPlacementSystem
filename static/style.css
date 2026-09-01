@@ -1,0 +1,222 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f6f8;
+    color: #222;
+}
+
+header {
+    text-align: center;
+    padding: 40px 20px;
+    background-color: white;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header p {
+    font-size: 18px;
+    color: #666;
+}
+
+main {
+    max-width: 1100px;
+    margin: 30px auto;
+    padding: 0 20px;
+}
+
+.welcome {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    margin-bottom: 25px;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+}
+
+.card {
+    background-color: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.card h3 {
+    margin-top: 0;
+}
+
+.card p {
+    color: #666;
+    line-height: 1.5;
+}
+
+@media (max-width: 800px) {
+    .cards {
+        grid-template-columns: 1fr;
+    }
+}
+nav {
+    background-color: white;
+    padding: 18px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+nav a {
+    text-decoration: none;
+    margin: 0 20px;
+    font-weight: bold;
+    color: #333;
+}
+
+nav a:hover {
+    color: #007bff;
+}
+
+.progress-section {
+    background-color: white;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 12px;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 30px;
+    background-color: #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    background-color: #007bff;
+    color: white;
+    text-align: center;
+    line-height: 30px;
+    font-weight: bold;
+}
+
+/* Dashboard Cards */
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-top: 25px;
+}
+
+.card {
+    background: white;
+    padding: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+}
+
+
+/* Navigation */
+
+nav {
+    display: flex;
+    gap: 25px;
+    padding: 18px 30px;
+    background-color: #111827;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+
+/* Main Content */
+
+main {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+
+/* Page Header */
+
+header {
+    text-align: center;
+    padding: 50px 20px 20px;
+}
+
+
+/* Forms */
+
+.update-section {
+    background-color: white;
+    padding: 25px;
+    margin-top: 25px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+input,
+select {
+    padding: 10px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+}
+button {
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+
+/* Mobile Responsive Design */
+
+@media (max-width: 600px) {
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .cards {
+        grid-template-columns: 1fr;
+    }
+
+}
+.task-card.pending {
+    border-left: 5px solid orange;
+}
+
+.task-card.completed {
+    border-left: 5px solid green;
+}

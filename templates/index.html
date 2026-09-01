@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Home | Smart Placement System{% endblock %}
+
+{% block content %}
+
+<header>
+    <h1>Smart Placement Preparation System</h1>
+    <p>Your personal placement preparation dashboard</p>
+</header>
+
+<main>
+
+    <section class="welcome">
+        <h2>Welcome! 👋</h2>
+
+        <p>
+            Track your learning, practice DSA, and prepare for placements.
+        </p>
+
+        <p>
+            <strong>DSA Lectures Completed:</strong>
+            {{ lectures_completed }}
+        </p>
+
+        <p>
+            <strong>DSA Problems Solved:</strong>
+            {{ problems_solved }}
+        </p>
+    </section>
+
+    <section class="cards">
+
+        <div class="card">
+            <h3>🧠 DSA</h3>
+            <p>Lectures Completed</p>
+            <h2>{{ lectures_completed }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>📝 Problems</h3>
+            <p>Problems Solved</p>
+            <h2>{{ problems_solved }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>🚀 Projects</h3>
+            <p>Projects in your portfolio</p>
+            <h2>3</h2>
+        </div>
+
+        <div class="card">
+            <h3>🗄️ DBMS</h3>
+            <p>Database preparation</p>
+            <h2>In Progress</h2>
+        </div>
+
+        <div class="card">
+            <h3>💻 Operating Systems</h3>
+            <p>OS preparation</p>
+            <h2>In Progress</h2>
+        </div>
+
+        <div class="card">
+            <h3>💼 Placement</h3>
+            <p>Overall preparation</p>
+            <h2>Active</h2>
+        </div>
+
+        <div class="card">
+            <h3>📋 Daily Tasks</h3>
+            <p>Total Tasks</p>
+            <h2>{{ total_tasks }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>✅ Completed</h3>
+            <p>Completed Tasks</p>
+            <h2>{{ completed_tasks }}</h2>
+        </div>
+
+        <div class="card">
+            <h3>⏳ Pending</h3>
+            <p>Pending Tasks</p>
+            <h2>{{ pending_tasks }}</h2>
+        </div>
+
+    </section>
+
+</main>
+
+<div class="update-section">
+
+    <h2>Daily Tasks</h2>
+
+    <p>Manage your placement preparation tasks.</p>
+
+    <a href="/tasks">Go to Tasks →</a>
+
+</div>
+
+{% endblock %}

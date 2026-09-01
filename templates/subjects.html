@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+
+{% block title %}Subjects | Smart Placement System{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <h1>Subjects</h1>
+
+    <p>Track your technical subject preparation.</p>
+
+    <section class="cards">
+
+        {% for subject in subjects %}
+        <form method="POST" action="/update-subject/{{ subject[0] }}">
+
+        <label for="progress-{{ subject[0] }}">
+            Update Progress:
+        </label>
+
+        <input
+            type="number"
+            id="progress-{{ subject[0] }}"
+            name="progress"
+            min="0"
+            max="100"
+            value="{{ subject[2] }}"
+            required
+        >
+
+        <button type="submit">Update</button>
+
+        </form>
+
+        <div class="card">
+
+            <h3>{{ subject[1] }}</h3>
+
+            <p>
+                <strong>Progress:</strong>
+                {{ subject[2] }}%
+            </p>
+
+            <p>
+                <strong>Status:</strong>
+                {{ subject[3] }}
+            </p>
+
+            <div class="progress-bar">
+
+            <div
+                class="progress-fill"
+                style="width: {{ subject[2] }}%;"
+            >
+                {{ subject[2] }}%
+            </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+</main>
+
+{% endblock %}

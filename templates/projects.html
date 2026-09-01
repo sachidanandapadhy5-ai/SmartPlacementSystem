@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+
+{% block title %}Projects | Smart Placement System{% endblock %}
+
+{% block content %}
+
+<main>
+
+    <h1>My Projects</h1>
+
+    <p>Track projects that help build my technical portfolio.</p>
+
+    <section class="cards">
+
+        {% for project in projects %}
+
+        <div class="card">
+
+            <h3>{{ project[1] }}</h3>
+
+            <p>{{ project[2] }}</p>
+
+            <p>
+                <strong>Status:</strong> {{ project[3] }}
+            </p>
+
+            <p>
+                <strong>Technology:</strong> {{ project[4] }}
+            </p>
+
+            <form method="POST" action="/delete-project/{{ project[0] }}">
+            <button type="submit">Delete Project</button>
+            </form>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+
+        <section class="update-section">
+
+        <h2>Add New Project</h2>
+
+        <form method="POST" action="/add-project">
+
+           <label for="status">Status:</label>
+
+            <select id="status" name="status" required>
+
+            <option value="">Select Status</option>
+
+            <option value="Planned">Planned</option>
+
+            <option value="In Development">In Development</option>
+
+            <option value="Completed">Completed</option>
+
+            <option value="On Hold">On Hold</option>
+
+            </select>
+
+            <label for="description">Description:</label>
+
+            <input
+                type="text"
+                id="description"
+                name="description"
+                placeholder="Enter project description"
+                required
+            >
+
+            <label for="status">Status:</label>
+
+            <input
+                type="text"
+                id="status"
+                name="status"
+                placeholder="e.g. In Development"
+                required
+            >
+
+            <label for="technology">Technology:</label>
+
+            <input
+                type="text"
+                id="technology"
+                name="technology"
+                placeholder="e.g. Python, Flask, SQLite"
+                required
+            >
+
+            <button type="submit">Add Project</button>
+
+        </form>
+
+    </section>
+
+</main>
+
+{% endblock %}
+
