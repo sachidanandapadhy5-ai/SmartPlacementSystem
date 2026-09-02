@@ -6,107 +6,350 @@
 
 <main>
 
-    <h1>Daily Tasks</h1>
-    <p>
-        Total: {{ total_tasks }} |
-        Completed: {{ completed_tasks }} |
-        Pending: {{ pending_tasks }}
-    </p>
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
 
-    <form
-        method="POST"
-        action="/clear-completed-tasks"
-        onsubmit="return confirm('Are you sure you want to clear completed tasks?');"
-    >
+    <section class="page-header">
 
-        <button type="submit">
-            Clear Completed Tasks
-        </button>
+        <p class="hero-label">
+            🎯 DAILY PLACEMENT PREPARATION
+        </p>
 
-    </form>
+        <h1>
+            Daily Tasks
+        </h1>
 
-    <p>Manage your daily placement preparation tasks.</p>
-
-    <section class="cards">
-        {% if tasks %}
-        {% for task in tasks %}
-
-        <div class="card task-card {{ task[3]|lower }}">
-
-            <h3>{{ task[1] }}</h3>
-
-            <p>{{ task[2] }}</p>
-
-            <p>
-                <strong>Status:</strong>
-                {% if task[3] == "Completed" %}
-                    ✅ Completed
-                {% else %}
-                    ⏳ Pending
-                {% endif %}
-            </p>
-
-            {% if task[3] == "Pending" %}
-
-            <form method="POST" action="/complete-task/{{ task[0] }}">
-                <button type="submit">Mark as Completed</button>
-            </form>
-
-            {% endif %}
-
-            <form method="POST" action="/delete-task/{{ task[0] }}">
-                <button type="submit">Delete Task</button>
-            </form>
-
-        </div>
-
-        {% endfor %}
-        {% else %}
-
-        <p>No tasks yet. Add your first task below! 🚀</p>
-
-        {% endif %}
+        <p>
+            Plan your preparation, complete important tasks,
+            and stay consistent every day.
+        </p>
 
     </section>
 
-    <section class="update-section">
 
-        <h2>Add New Task</h2>
+    <!-- =====================================================
+         TASK STATISTICS
+         ===================================================== -->
 
-        <form method="POST" action="/add-task">
+    <section class="cards">
 
-            <label for="title">Task Title:</label>
+        <div class="card stat-card">
 
-            <input
-                type="text"
-                id="title"
-                name="title"
-                placeholder="e.g. Complete DSA Lecture 41"
-                required
+            <span class="stat-icon">
+                📋
+            </span>
+
+            <h3>
+                Total Tasks
+            </h3>
+
+            <strong>
+                {{ total_tasks }}
+            </strong>
+
+            <p>
+                Tasks in your tracker
+            </p>
+
+        </div>
+
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                ✅
+            </span>
+
+            <h3>
+                Completed
+            </h3>
+
+            <strong>
+                {{ completed_tasks }}
+            </strong>
+
+            <p>
+                Tasks completed
+            </p>
+
+        </div>
+
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                ⏳
+            </span>
+
+            <h3>
+                Pending
+            </h3>
+
+            <strong>
+                {{ pending_tasks }}
+            </strong>
+
+            <p>
+                Tasks remaining
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- =====================================================
+         TASK CONTROLS
+         ===================================================== -->
+
+    <section class="task-controls">
+
+        <div>
+
+            <p class="section-label">
+                TASK MANAGEMENT
+            </p>
+
+            <h2>
+                Stay Consistent
+            </h2>
+
+            <p>
+                Complete your pending tasks and keep your
+                preparation moving forward.
+            </p>
+
+        </div>
+
+
+        <form
+            method="POST"
+            action="/clear-completed-tasks"
+            onsubmit="return confirm('Are you sure you want to clear completed tasks?');"
+        >
+
+            <button
+                type="submit"
+                class="clear-btn"
             >
-
-            <label for="description">Description:</label>
-
-            <input
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Enter task description"
-                required
-            >
-
-            <button type="submit">Add Task</button>
+                🧹 Clear Completed
+            </button>
 
         </form>
 
     </section>
 
-    <!-- Back to Home -->
 
-    <p>
-        <a href="/">← Back to Home</a>
-    </p>
+    <!-- =====================================================
+         TASK LIST
+         ===================================================== -->
 
+    <section class="cards task-grid">
+
+        {% if tasks %}
+
+            {% for task in tasks %}
+
+            <div class="card task-card {{ task[3]|lower }}">
+
+                <!-- Task Header -->
+
+                <div class="task-header">
+
+                    <div class="task-icon">
+
+                        {% if task[3] == "Completed" %}
+                            ✓
+                        {% else %}
+                            →
+                        {% endif %}
+
+                    </div>
+
+                    <span class="status">
+
+                        {% if task[3] == "Completed" %}
+
+                            ✅ Completed
+
+                        {% else %}
+
+                            ⏳ Pending
+
+                        {% endif %}
+
+                    </span>
+
+                </div>
+
+
+                <!-- Task Title -->
+
+                <h3>
+                    {{ task[1] }}
+                </h3>
+
+
+                <!-- Task Description -->
+
+                <p class="task-description">
+                    {{ task[2] }}
+                </p>
+
+
+                <!-- Actions -->
+
+                <div class="task-actions">
+
+                    {% if task[3] == "Pending" %}
+
+                    <form
+                        method="POST"
+                        action="/complete-task/{{ task[0] }}"
+                    >
+
+                        <button
+                            type="submit"
+                            class="complete-btn"
+                        >
+                            ✓ Mark Completed
+                        </button>
+
+                    </form>
+
+                    {% endif %}
+
+
+                    <form
+                        method="POST"
+                        action="/delete-task/{{ task[0] }}"
+                        onsubmit="return confirm('Are you sure you want to delete this task?');"
+                    >
+
+                        <button
+                            type="submit"
+                            class="delete-btn"
+                        >
+                            Delete Task
+                        </button>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+            {% endfor %}
+
+        {% else %}
+
+            <div class="card empty-task-card">
+
+                <div class="empty-icon">
+                    📝
+                </div>
+
+                <h3>
+                    No Tasks Yet
+                </h3>
+
+                <p>
+                    Add your first placement preparation task
+                    below and start making progress.
+                </p>
+
+            </div>
+
+        {% endif %}
+
+    </section>
+
+
+    <!-- =====================================================
+         ADD TASK
+         ===================================================== -->
+
+    <section class="update-section">
+
+        <p class="section-label">
+            PLAN YOUR NEXT STEP
+        </p>
+
+        <h2>
+            Add New Task
+        </h2>
+
+        <p class="form-description">
+            Create a task for your DSA practice, subjects,
+            projects, or any other placement preparation activity.
+        </p>
+
+
+        <form method="POST" action="/add-task">
+
+            <div class="form-group">
+
+                <label for="title">
+                    Task Title
+                </label>
+
+                <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    placeholder="e.g. Complete DSA Lecture 41"
+                    required
+                >
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label for="description">
+                    Description
+                </label>
+
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Enter task description"
+                    required
+                ></textarea>
+
+            </div>
+
+
+            <button type="submit">
+                Add Task →
+            </button>
+
+        </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOTIVATION
+         ===================================================== -->
+
+    <section class="progress-section task-message">
+
+        <p class="section-label">
+            DAILY CONSISTENCY
+        </p>
+
+        <h2>
+            One Task at a Time. One Step Closer. 🚀
+        </h2>
+
+        <p>
+            Consistent daily progress builds strong technical
+            skills and prepares you for your placement goals.
+        </p>
+
+    </section>
 
 </main>
 

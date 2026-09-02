@@ -6,31 +6,102 @@
 
 <main>
 
-    <h1>My Projects</h1>
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
 
-    <p>Track projects that help build my technical portfolio.</p>
+    <section class="page-header">
+
+        <p class="hero-label">
+            💻 PROJECT PORTFOLIO
+        </p>
+
+        <h1>
+            My Projects
+        </h1>
+
+        <p>
+            Build, track and showcase projects that strengthen
+            your technical portfolio and placement profile.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         PROJECT CARDS
+         ===================================================== -->
 
     <section class="cards">
 
         {% for project in projects %}
 
-        <div class="card">
+        <div class="card project-card">
 
-            <h3>{{ project[1] }}</h3>
+            <!-- Project Icon -->
 
-            <p>{{ project[2] }}</p>
+            <div class="project-top">
 
-            <p>
-                <strong>Status:</strong> {{ project[3] }}
+                <div class="project-icon">
+                    💻
+                </div>
+
+                <span class="status">
+                    {{ project[3] }}
+                </span>
+
+            </div>
+
+
+            <!-- Project Name -->
+
+            <h3 class="project-title">
+                {{ project[1] }}
+            </h3>
+
+
+            <!-- Description -->
+
+            <p class="project-description">
+                {{ project[2] }}
             </p>
 
-            <p>
-                <strong>Technology:</strong> {{ project[4] }}
-            </p>
 
-            <form method="POST" action="/delete-project/{{ project[0] }}">
-            <button type="submit">Delete Project</button>
-            </form>
+            <!-- Technology -->
+
+            <div class="project-tech">
+
+                <span class="tech-label">
+                    TECHNOLOGY
+                </span>
+
+                <p>
+                    {{ project[4] }}
+                </p>
+
+            </div>
+
+
+            <!-- Delete -->
+
+            <div class="project-actions">
+
+                <form
+                    method="POST"
+                    action="/delete-project/{{ project[0] }}"
+                    onsubmit="return confirm('Are you sure you want to delete this project?');"
+                >
+
+                    <button
+                        type="submit"
+                        class="delete-btn"
+                    >
+                        Delete Project
+                    </button>
+
+                </form>
+
+            </div>
 
         </div>
 
@@ -38,65 +109,158 @@
 
     </section>
 
-        <section class="update-section">
 
-        <h2>Add New Project</h2>
+    <!-- =====================================================
+         ADD PROJECT
+         ===================================================== -->
+
+    <section class="update-section">
+
+        <p class="section-label">
+            BUILD YOUR PORTFOLIO
+        </p>
+
+        <h2>
+            Add New Project
+        </h2>
+
+        <p class="form-description">
+            Add a project to keep your technical portfolio
+            organized and placement-ready.
+        </p>
+
 
         <form method="POST" action="/add-project">
 
-           <label for="status">Status:</label>
 
-            <select id="status" name="status" required>
+            <!-- Project Name -->
 
-            <option value="">Select Status</option>
+            <div class="form-group">
 
-            <option value="Planned">Planned</option>
+                <label for="project-name">
+                    Project Name
+                </label>
 
-            <option value="In Development">In Development</option>
+                <input
+                    type="text"
+                    id="project-name"
+                    name="name"
+                    placeholder="e.g. Smart Placement System"
+                    required
+                >
 
-            <option value="Completed">Completed</option>
+            </div>
 
-            <option value="On Hold">On Hold</option>
 
-            </select>
+            <!-- Description -->
 
-            <label for="description">Description:</label>
+            <div class="form-group">
 
-            <input
-                type="text"
-                id="description"
-                name="description"
-                placeholder="Enter project description"
-                required
-            >
+                <label for="description">
+                    Description
+                </label>
 
-            <label for="status">Status:</label>
+                <textarea
+                    id="description"
+                    name="description"
+                    placeholder="Describe your project..."
+                    required
+                ></textarea>
 
-            <input
-                type="text"
-                id="status"
-                name="status"
-                placeholder="e.g. In Development"
-                required
-            >
+            </div>
 
-            <label for="technology">Technology:</label>
 
-            <input
-                type="text"
-                id="technology"
-                name="technology"
-                placeholder="e.g. Python, Flask, SQLite"
-                required
-            >
+            <!-- Status -->
 
-            <button type="submit">Add Project</button>
+            <div class="form-group">
+
+                <label for="project-status">
+                    Status
+                </label>
+
+                <select
+                    id="project-status"
+                    name="status"
+                    required
+                >
+
+                    <option value="">
+                        Select Status
+                    </option>
+
+                    <option value="Planned">
+                        Planned
+                    </option>
+
+                    <option value="In Development">
+                        In Development
+                    </option>
+
+                    <option value="Completed">
+                        Completed
+                    </option>
+
+                    <option value="On Hold">
+                        On Hold
+                    </option>
+
+                </select>
+
+            </div>
+
+
+            <!-- Technology -->
+
+            <div class="form-group">
+
+                <label for="technology">
+                    Technology
+                </label>
+
+                <input
+                    type="text"
+                    id="technology"
+                    name="technology"
+                    placeholder="e.g. Python, Flask, SQLite"
+                    required
+                >
+
+            </div>
+
+
+            <!-- Submit -->
+
+            <button type="submit">
+                Add Project →
+            </button>
 
         </form>
+
+    </section>
+
+
+    <!-- =====================================================
+         MOTIVATION
+         ===================================================== -->
+
+    <section class="progress-section project-message">
+
+        <p class="section-label">
+            KEEP BUILDING
+        </p>
+
+        <h2>
+            Build Projects. Show Your Skills. 🚀
+        </h2>
+
+        <p>
+            Every meaningful project gives you an opportunity
+            to demonstrate problem-solving, technical knowledge
+            and practical development skills.
+        </p>
 
     </section>
 
 </main>
 
 {% endblock %}
-

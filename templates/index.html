@@ -1,102 +1,305 @@
 {% extends "base.html" %}
 
-{% block title %}Home | Smart Placement System{% endblock %}
+{% block title %}Smart Placement System | Home{% endblock %}
 
 {% block content %}
 
-<header>
-    <h1>Smart Placement Preparation System</h1>
-    <p>Your personal placement preparation dashboard</p>
-</header>
-
 <main>
 
-    <section class="welcome">
-        <h2>Welcome! 👋</h2>
+    <!-- =====================================================
+         HERO SECTION
+         ===================================================== -->
 
-        <p>
-            Track your learning, practice DSA, and prepare for placements.
-        </p>
+    <section class="hero">
 
-        <p>
-            <strong>DSA Lectures Completed:</strong>
-            {{ lectures_completed }}
-        </p>
+        <div class="hero-content">
 
-        <p>
-            <strong>DSA Problems Solved:</strong>
-            {{ problems_solved }}
-        </p>
+            <p class="hero-label">
+                🚀 SMART PLACEMENT SYSTEM
+            </p>
+
+            <h1>
+                Prepare Smarter.<br>
+                Get Placement Ready.
+            </h1>
+
+            <p class="hero-description">
+                Track your DSA progress, manage technical subjects,
+                organize projects, and stay consistent with your
+                placement preparation — all in one place.
+            </p>
+
+
+            <div class="hero-buttons">
+
+                <a href="/dsa" class="primary-btn">
+                    Start Preparation →
+                </a>
+
+                <a href="/tasks" class="secondary-btn">
+                    View Tasks
+                </a>
+
+            </div>
+
+        </div>
+
     </section>
+
+
+    <!-- =====================================================
+         QUICK OVERVIEW
+         ===================================================== -->
 
     <section class="cards">
 
-        <div class="card">
-            <h3>🧠 DSA</h3>
-            <p>Lectures Completed</p>
-            <h2>{{ lectures_completed }}</h2>
+
+        <!-- DSA -->
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                📊
+            </span>
+
+            <h3>
+                DSA Progress
+            </h3>
+
+            <strong>
+                {{ lectures_completed }}
+            </strong>
+
+            <p>
+                Lectures Completed
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>📝 Problems</h3>
-            <p>Problems Solved</p>
-            <h2>{{ problems_solved }}</h2>
+
+        <!-- SUBJECTS -->
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                📚
+            </span>
+
+            <h3>
+                Subjects
+            </h3>
+
+            <strong>
+                Technical
+            </strong>
+
+            <p>
+                Track your technical subjects
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>🚀 Projects</h3>
-            <p>Projects in your portfolio</p>
-            <h2>3</h2>
+
+        <!-- PROJECTS -->
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                💻
+            </span>
+
+            <h3>
+                Projects
+            </h3>
+
+            <strong>
+                Build
+            </strong>
+
+            <p>
+                Build and showcase your projects
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>🗄️ DBMS</h3>
-            <p>Database preparation</p>
-            <h2>In Progress</h2>
+
+        <!-- TASKS -->
+
+        <div class="card stat-card">
+
+            <span class="stat-icon">
+                ✅
+            </span>
+
+            <h3>
+                Tasks
+            </h3>
+
+            <strong>
+                Focus
+            </strong>
+
+            <p>
+                Stay consistent every day
+            </p>
+
         </div>
 
-        <div class="card">
-            <h3>💻 Operating Systems</h3>
-            <p>OS preparation</p>
-            <h2>In Progress</h2>
+    </section>
+
+
+    <!-- =====================================================
+         PREPARATION AREAS
+         ===================================================== -->
+
+    <section class="progress-section">
+
+        <div class="section-heading">
+
+            <div>
+
+                <p class="section-label">
+                    YOUR PREPARATION
+                </p>
+
+                <h2>
+                    Build Your Placement Profile
+                </h2>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>💼 Placement</h3>
-            <p>Overall preparation</p>
-            <h2>Active</h2>
+
+        <div class="cards">
+
+
+            <div class="card">
+
+                <span class="stat-icon">
+                    🧠
+                </span>
+
+                <h3>
+                    Data Structures & Algorithms
+                </h3>
+
+                <p>
+                    Strengthen problem-solving skills,
+                    algorithms, and coding consistency.
+                </p>
+
+                <a href="/dsa">
+                    Explore DSA →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <span class="stat-icon">
+                    📖
+                </span>
+
+                <h3>
+                    Core Subjects
+                </h3>
+
+                <p>
+                    Keep track of important technical
+                    subjects required for placements.
+                </p>
+
+                <a href="/subjects">
+                    View Subjects →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <span class="stat-icon">
+                    🛠️
+                </span>
+
+                <h3>
+                    Projects
+                </h3>
+
+                <p>
+                    Organize your projects and build a
+                    stronger technical portfolio.
+                </p>
+
+                <a href="/projects">
+                    View Projects →
+                </a>
+
+            </div>
+
+
+            <div class="card">
+
+                <span class="stat-icon">
+                    🎯
+                </span>
+
+                <h3>
+                    Daily Tasks
+                </h3>
+
+                <p>
+                    Plan your preparation and maintain
+                    consistency every day.
+                </p>
+
+                <a href="/tasks">
+                    View Tasks →
+                </a>
+
+            </div>
+
         </div>
 
-        <div class="card">
-            <h3>📋 Daily Tasks</h3>
-            <p>Total Tasks</p>
-            <h2>{{ total_tasks }}</h2>
-        </div>
+    </section>
 
-        <div class="card">
-            <h3>✅ Completed</h3>
-            <p>Completed Tasks</p>
-            <h2>{{ completed_tasks }}</h2>
-        </div>
 
-        <div class="card">
-            <h3>⏳ Pending</h3>
-            <p>Pending Tasks</p>
-            <h2>{{ pending_tasks }}</h2>
+    <!-- =====================================================
+         FINAL MOTIVATION
+         ===================================================== -->
+
+    <section class="update-section">
+
+        <p class="section-label">
+            KEEP MOVING FORWARD
+        </p>
+
+        <h2>
+            Small Progress. Every Day. 🚀
+        </h2>
+
+        <p class="form-description">
+            Your placement preparation is a journey.
+            Stay consistent, improve your skills,
+            build meaningful projects, and keep learning.
+        </p>
+
+        <div class="hero-buttons">
+
+            <a href="/dsa" class="primary-btn">
+                Continue Preparation →
+            </a>
+
+            <a href="/tasks" class="secondary-btn">
+                Check Today's Tasks
+            </a>
+
         </div>
 
     </section>
 
 </main>
-
-<div class="update-section">
-
-    <h2>Daily Tasks</h2>
-
-    <p>Manage your placement preparation tasks.</p>
-
-    <a href="/tasks">Go to Tasks →</a>
-
-</div>
 
 {% endblock %}

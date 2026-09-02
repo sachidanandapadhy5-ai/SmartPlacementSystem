@@ -6,70 +6,140 @@
 
 <main>
 
-    <h1>DSA Tracker</h1>
+    <section class="page-header">
+        <p class="hero-label">🧠 DATA STRUCTURES & ALGORITHMS</p>
 
-    <p>Track your Data Structures and Algorithms preparation.</p>
+        <h1>DSA Tracker</h1>
+
+        <p>
+            Track your lectures, problems and overall DSA preparation.
+        </p>
+    </section>
+
 
     <section class="cards">
 
-        <div class="card">
+        <div class="card stat-card">
+            <span class="stat-icon">🎥</span>
+
             <h3>Lectures Completed</h3>
-            <p>{{ lectures_completed }}</p>
+
+            <strong>{{ lectures_completed }}</strong>
+
+            <p>Keep learning consistently.</p>
         </div>
 
-        <div class="card">
+
+        <div class="card stat-card">
+            <span class="stat-icon">💻</span>
+
             <h3>Problems Solved</h3>
-            <p>{{ problems_solved }}</p>
+
+            <strong>{{ problems_solved }}</strong>
+
+            <p>Practice makes progress.</p>
         </div>
 
-        <div class="card">
-            <h3>Current Topic</h3>
-            <p>DSA Practice</p>
+
+        <div class="card stat-card">
+            <span class="stat-icon">🎯</span>
+
+            <h3>Current Focus</h3>
+
+            <strong>DSA Practice</strong>
+
+            <p>Build strong problem-solving skills.</p>
         </div>
 
     </section>
 
+
     <section class="progress-section">
 
-        <h2>Lecture Progress</h2>
+        <div class="section-heading">
+
+            <div>
+                <p class="section-label">YOUR PROGRESS</p>
+                <h2>Lecture Progress</h2>
+            </div>
+
+            <span class="progress-number">
+                {{ progress_percentage }}%
+            </span>
+
+        </div>
+
 
         <div class="progress-bar">
 
-            <div class="progress-fill" style="width: {{ progress_percentage }}%;">
+            <div
+                class="progress-fill"
+                style="width: {{ progress_percentage }}%;"
+            >
                 {{ progress_percentage }}%
             </div>
 
         </div>
 
+        <p class="progress-message">
+            Keep going — every lecture brings you closer to your goal. 🚀
+        </p>
+
     </section>
+
 
     <section class="update-section">
 
+        <p class="section-label">UPDATE YOUR JOURNEY</p>
+
         <h2>Update DSA Progress</h2>
+
+        <p class="form-description">
+            Enter your latest lecture and problem-solving progress.
+        </p>
+
 
         <form method="POST" action="/update-dsa">
 
-            <label for="lectures">Lectures Completed:</label>
+            <div class="form-group">
 
-            <input
-                type="number"
-                id="lectures"
-                name="lectures"
-                min="0"
-                required
-            >
+                <label for="lectures">
+                    Lectures Completed
+                </label>
 
-            <label for="problems">Problems Solved:</label>
+                <input
+                    type="number"
+                    id="lectures"
+                    name="lectures"
+                    min="0"
+                    value="{{ lectures_completed }}"
+                    required
+                >
 
-            <input
-                type="number"
-                id="problems"
-                name="problems"
-                min="0"
-                required
-            >
+            </div>
 
-            <button type="submit">Update Progress</button>
+
+            <div class="form-group">
+
+                <label for="problems">
+                    Problems Solved
+                </label>
+
+                <input
+                    type="number"
+                    id="problems"
+                    name="problems"
+                    min="0"
+                    value="{{ problems_solved }}"
+                    required
+                >
+
+            </div>
+
+
+            <button type="submit">
+                Update Progress →
+            </button>
 
         </form>
 

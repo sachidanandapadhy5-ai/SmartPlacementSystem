@@ -6,61 +6,169 @@
 
 <main>
 
-    <h1>Subjects</h1>
+    <!-- =====================================================
+         PAGE HEADER
+         ===================================================== -->
 
-    <p>Track your technical subject preparation.</p>
+    <section class="page-header">
+
+        <p class="hero-label">
+            📚 CORE TECHNICAL SUBJECTS
+        </p>
+
+        <h1>
+            Subjects
+        </h1>
+
+        <p>
+            Track your technical subject preparation and
+            stay consistent with your placement goals.
+        </p>
+
+    </section>
+
+
+    <!-- =====================================================
+         SUBJECT CARDS
+         ===================================================== -->
 
     <section class="cards">
 
         {% for subject in subjects %}
-        <form method="POST" action="/update-subject/{{ subject[0] }}">
 
-        <label for="progress-{{ subject[0] }}">
-            Update Progress:
-        </label>
+        <div class="card subject-card">
 
-        <input
-            type="number"
-            id="progress-{{ subject[0] }}"
-            name="progress"
-            min="0"
-            max="100"
-            value="{{ subject[2] }}"
-            required
-        >
 
-        <button type="submit">Update</button>
+            <!-- SUBJECT HEADER -->
 
-        </form>
+            <div class="subject-header">
 
-        <div class="card">
+                <div>
 
-            <h3>{{ subject[1] }}</h3>
+                    <p class="section-label">
+                        SUBJECT
+                    </p>
 
-            <p>
-                <strong>Progress:</strong>
-                {{ subject[2] }}%
-            </p>
+                    <h3>
+                        {{ subject[1] }}
+                    </h3>
 
-            <p>
-                <strong>Status:</strong>
-                {{ subject[3] }}
-            </p>
+                </div>
 
-            <div class="progress-bar">
+                <div class="subject-percentage">
+                    {{ subject[2] }}%
+                </div>
 
-            <div
-                class="progress-fill"
-                style="width: {{ subject[2] }}%;"
-            >
-                {{ subject[2] }}%
             </div>
+
+
+            <!-- STATUS -->
+
+            <div class="subject-status">
+
+                <span class="status">
+                    {{ subject[3] }}
+                </span>
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div class="subject-progress">
+
+                <div class="progress-info">
+
+                    <span>
+                        Preparation Progress
+                    </span>
+
+                    <strong>
+                        {{ subject[2] }}%
+                    </strong>
+
+                </div>
+
+
+                <div class="progress-bar">
+
+                    <div
+                        class="progress-fill"
+                        style="width: {{ subject[2] }}%;"
+                    >
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- UPDATE FORM -->
+
+            <div class="subject-update">
+
+                <p class="section-label">
+                    UPDATE PROGRESS
+                </p>
+
+                <form
+                    method="POST"
+                    action="/update-subject/{{ subject[0] }}"
+                >
+
+                    <div class="subject-form-row">
+
+                        <input
+                            type="number"
+                            id="progress-{{ subject[0] }}"
+                            name="progress"
+                            min="0"
+                            max="100"
+                            value="{{ subject[2] }}"
+                            required
+                        >
+
+                        <span class="percentage-symbol">
+                            %
+                        </span>
+
+                        <button type="submit">
+                            Update →
+                        </button>
+
+                    </div>
+
+                </form>
 
             </div>
 
         </div>
 
         {% endfor %}
+
+    </section>
+
+
+    <!-- =====================================================
+         MOTIVATION
+         ===================================================== -->
+
+    <section class="update-section">
+
+        <p class="section-label">
+            KEEP BUILDING
+        </p>
+
+        <h2>
+            Strong Fundamentals = Strong Placements 🚀
+        </h2>
+
+        <p class="form-description">
+            Keep improving your core technical subjects.
+            Consistent preparation across DSA, DBMS, OS,
+            Computer Networks and other fundamentals will
+            strengthen your placement preparation.
+        </p>
 
     </section>
 

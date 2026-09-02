@@ -8,23 +8,58 @@
 
     <title>{% block title %}Smart Placement System{% endblock %}</title>
 
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
 
-    <link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+    <link rel="icon"
+          href="{{ url_for('static', filename='favicon.ico') }}">
+
 </head>
 
 <body>
 
     <nav>
-        <a href="/">Home</a>
-        <a href="/dsa">DSA</a>
-        <a href="/subjects">Subjects</a>
-        <a href="/projects">Projects</a>
-        <a href="/tasks">Tasks</a>
+
+        <a href="/" class="brand">
+
+            <img
+                src="{{ url_for('static', filename='logo.png') }}"
+                alt="SP Logo"
+            >
+
+            <span>Smart Placement</span>
+
+        </a>
+
+
+        <div class="nav-links">
+
+            <a href="/">Home</a>
+            <a href="/dsa">DSA</a>
+            <a href="/subjects">Subjects</a>
+            <a href="/projects">Projects</a>
+            <a href="/tasks">Tasks</a>
+
+        </div>
+
     </nav>
+
 
     {% block content %}
     {% endblock %}
+
+
+    <footer>
+
+        <p>
+            © 2026 Smart Placement System
+        </p>
+
+        <p>
+            Built for smarter placement preparation 🚀
+        </p>
+
+    </footer>
 
 </body>
 
