@@ -1,4 +1,28 @@
+# Virtual Environment
 venv/
+.venv/
+
+# Python
 __pycache__/
-*.pyc
-placement.db
+*.py[cod]
+*$py.class
+
+# Environment Variables
+.env
+.env.*
+
+# Flask
+instance/
+
+# Database
+*.db
+*.sqlite
+*.sqlite3
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
